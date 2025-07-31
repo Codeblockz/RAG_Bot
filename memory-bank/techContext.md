@@ -56,17 +56,78 @@
 ### Project Structure
 ```
 rag-chatbot-template/
-├── backend/                    # FastAPI application
-│   ├── app/                    # Main application code
-│   ├── config/                 # Configuration files
-│   ├── tests/                  # Test suite
-│   └── requirements.txt        # Python dependencies
-├── frontend/                   # React/Next.js application  
+├── backend/
+│   ├── app/
+│   │   ├── core/
+│   │   │   ├── config.py           # Configuration management
+│   │   │   ├── logging.py          # Logging setup
+│   │   │   └── security.py         # Auth & API key management
+│   │   ├── services/
+│   │   │   ├── embeddings/         # Embedding service abstraction
+│   │   │   ├── vectorstore/        # Vector database abstraction
+│   │   │   ├── llm/               # LLM provider abstraction
+│   │   │   ├── retrieval/         # Retrieval strategies
+│   │   │   └── chat/              # Chat orchestration
+│   │   ├── api/
+│   │   │   ├── routes/            # API endpoints
+│   │   │   └── middleware/        # Rate limiting, CORS, etc.
+│   │   ├── models/
+│   │   │   ├── schemas.py         # Pydantic models
+│   │   │   └── database.py        # Database models (chat history)
+│   │   └── utils/
+│   │       ├── document_processing.py
+│   │       └── text_chunking.py
+│   ├── config/
+│   │   ├── prompts.yaml           # Customizable prompt templates
+│   │   ├── models.yaml            # Model configurations
+│   │   └── retrieval.yaml         # Retrieval parameters
+│   ├── tests/
+│   ├── requirements.txt
+│   └── Dockerfile
+├── frontend/
 │   ├── src/
-│   └── package.json            # Node.js dependencies
-├── deployment/                 # Cloud deployment configurations
-├── docs/                       # Documentation
-└── scripts/                    # Utility scripts
+│   │   ├── components/
+│   │   │   ├── Chat/              # Chat interface components
+│   │   │   ├── Upload/            # Document upload components
+│   │   │   └── Settings/          # Configuration UI
+│   │   ├── hooks/                 # Custom React hooks
+│   │   ├── services/              # API client
+│   │   └── utils/
+│   ├── public/
+│   ├── package.json
+│   └── Dockerfile
+├── deployment/
+│   ├── local/
+│   │   ├── docker-compose.yml
+│   │   └── docker-compose.prod.yml
+│   ├── aws/
+│   │   ├── terraform/             # AWS infrastructure
+│   │   ├── cloudformation/        # Alternative IaC
+│   │   ├── ecs/                   # ECS task definitions
+│   │   └── lambda/                # Serverless functions
+│   ├── azure/
+│   │   ├── terraform/             # Azure infrastructure
+│   │   ├── arm-templates/         # ARM templates
+│   │   ├── container-instances/   # ACI configurations
+│   │   └── functions/             # Azure Functions
+│   ├── kubernetes/
+│   │   ├── base/                  # Base K8s manifests
+│   │   ├── aws-eks/               # EKS-specific configs
+│   │   └── azure-aks/             # AKS-specific configs
+│   └── ci-cd/
+│       ├── github-actions/        # GitHub workflows
+│       ├── azure-devops/          # Azure Pipelines
+│       └── aws-codepipeline/      # AWS CodePipeline
+├── docs/
+│   ├── API.md                     # API documentation
+│   ├── DEPLOYMENT.md              # Deployment guide
+│   ├── CUSTOMIZATION.md           # How to adapt for new domains
+│   └── TROUBLESHOOTING.md
+├── scripts/
+│   ├── setup.sh                   # Environment setup
+│   ├── migrate.py                 # Database migrations
+│   └── seed_data.py               # Sample data loader
+└── README.md
 ```
 
 ## Technical Constraints
