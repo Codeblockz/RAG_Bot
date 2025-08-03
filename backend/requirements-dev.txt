@@ -1,0 +1,39 @@
+# Include production requirements
+-r requirements.txt
+
+# Development and testing
+pytest>=7.4.0
+pytest-asyncio>=0.21.0
+pytest-cov>=4.1.0
+pytest-mock>=3.11.0
+pytest-xdist>=3.3.0
+
+# Code quality and formatting
+black>=23.7.0
+ruff>=0.0.287
+mypy>=1.5.0
+pre-commit>=3.3.0
+
+# Type stubs
+types-pyyaml>=6.0.0
+types-requests>=2.31.0
+types-redis>=4.6.0
+
+# Development utilities
+ipython>=8.14.0
+jupyterlab>=4.0.0
+httpie>=3.2.0
+
+# Documentation
+mkdocs>=1.5.0
+mkdocs-material>=9.1.0
+mkdocs-mermaid2-plugin>=1.1.0
+
+# Database development
+pgcli>=3.5.0
+
+# Load testing
+locust>=2.16.0
+
+# Debugging
+debugpy>=1.6.0
